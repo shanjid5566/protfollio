@@ -11,12 +11,31 @@ function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [cursorOutlinePos, setCursorOutlinePos] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isDesktopPointer, setIsDesktopPointer] = useState(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return false;
+    return window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches;
+  });
+
+  // Enable custom cursor only when device has a fine pointer and is wide enough
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(pointer: fine) and (min-width: 1024px)');
+    const handleChange = (e) => setIsDesktopPointer(e.matches);
+    // listen for changes
+    if (mq.addEventListener) mq.addEventListener('change', handleChange);
+    else mq.addListener(handleChange);
+
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener('change', handleChange);
+      else mq.removeListener(handleChange);
+    };
+  }, []);
 
   useEffect(() => {
-    const updateCursor = (e) => {
-      // Dot instantly follows
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
+    // Only attach cursor listeners on devices with a fine pointer and large screens
+    if (!isDesktopPointer) return;
+
+    const updateCursor = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
 
     // Circle follows with delay
     const updateOutline = (e) => {
@@ -46,24 +65,28 @@ function App() {
         el.removeEventListener('mouseleave', handleMouseLeave);
       });
     };
-  }, []);
+  }, [isDesktopPointer]);
 
   return (
     <div className="bg-white dark:bg-dark-900 min-h-screen">
-      {/* Custom Cursor */}
-      <div 
-        className="custom-cursor"
-        style={{ transform: `translate(${cursorPos.x}px, ${cursorPos.y}px)` }}
-      >
-        <div className="cursor-dot"></div>
-      </div>
-      
-      <div 
-        className={`custom-cursor ${isHovering ? 'cursor-hover' : ''}`}
-        style={{ transform: `translate(${cursorOutlinePos.x}px, ${cursorOutlinePos.y}px)` }}
-      >
-        <div className="cursor-outline"></div>
-      </div>
+      {/* Custom Cursor - render only on desktop-size devices with a fine pointer */}
+      {isDesktopPointer && (
+        <>
+          <div 
+            className="custom-cursor"
+            style={{ transform: `translate(${cursorPos.x}px, ${cursorPos.y}px)` }}
+          >
+            <div className="cursor-dot"></div>
+          </div>
+          
+          <div 
+            className={`custom-cursor ${isHovering ? 'cursor-hover' : ''}`}
+            style={{ transform: `translate(${cursorOutlinePos.x}px, ${cursorOutlinePos.y}px)` }}
+          >
+            <div className="cursor-outline"></div>
+          </div>
+        </>
+      )}
 
       <Navbar />
       <Hero />

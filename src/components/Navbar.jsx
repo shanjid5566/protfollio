@@ -160,7 +160,8 @@ const Navbar = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                    aria-label={social.label}
+                    className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors p-2 rounded-md flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >

@@ -62,9 +62,10 @@ const Hero = () => {
             variants={itemVariants}
             className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            I craft beautiful, functional, and user-centric digital experiences.
-            Passionate about turning ideas into elegant solutions with clean code
-            and modern design.
+            I design and build accessible, high-performance web applications using React and
+            Next.js, leveraging modern tooling like Tailwind CSS. I focus on
+            clean, component-driven code, server-rendered and client-side solutions, responsive
+            interfaces, and practical UX—delivering reliable, production-ready applications.
           </motion.p>
 
           {/* CTA Buttons */}

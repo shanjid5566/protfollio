@@ -45,7 +45,7 @@ const Hero = () => {
           >
             Hi, I'm{' '}
             <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
-              Your Name
+              SHANJID AHMED RAFI
             </span>
           </motion.h1>
 
@@ -54,7 +54,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 mb-8 font-medium"
           >
-            Full Stack Developer & UI/UX Enthusiast
+            Full Stack Web Developer 
           </motion.p>
 
           {/* Description */}

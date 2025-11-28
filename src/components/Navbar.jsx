@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from "lucide-react";
 
@@ -37,13 +37,13 @@ const Navbar = () => {
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
-  const navLinks = [
+  const navLinks = useMemo(() => [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
-  ];
+  ], []);
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/shanjid5566", label: "GitHub" },
@@ -54,6 +54,27 @@ const Navbar = () => {
     },
     { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=shanjidahmed66@gmail.com", label: "Email" },
   ];
+
+  // Active link tracking for highlighting (desktop + mobile)
+  const [activeLink, setActiveLink] = useState('#home');
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.IntersectionObserver) return;
+    const opts = { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 };
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveLink('#' + entry.target.id);
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, opts);
+    navLinks.forEach((ln) => {
+      const el = document.querySelector(ln.href);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [navLinks]);
 
   return (
     <motion.nav
@@ -83,7 +104,9 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors"
+                onClick={() => setActiveLink(link.href)}
+                aria-current={activeLink === link.href ? 'page' : undefined}
+                className={`${activeLink === link.href ? 'text-primary-600 dark:text-primary-400 font-semibold' : 'text-gray-700 dark:text-gray-300'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -149,6 +172,8 @@ const Navbar = () => {
                   className="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors py-2"
                   onClick={(e) => {
                     e.preventDefault();
+                    // mark link active immediately
+                    setActiveLink(link.href);
                     const id = link.href;
                     // Close menu first so the layout becomes stable, then scroll
                     setIsOpen(false);

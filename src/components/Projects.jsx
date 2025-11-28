@@ -1,71 +1,110 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { ExternalLink, Github } from "lucide-react";
 
 const Projects = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with admin dashboard, payment integration, and real-time inventory management.',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      category: 'Full Stack',
+      title: "Indian Drone Services",
+      description:
+        "A comprehensive drone service platform offering aerial photography, surveying, and delivery solutions using cutting-edge drone technology.",
+      image: "/indian_drone_services.jpg",
+      tags: ["React", "Node.js", "Express", "PostgreSQL"],
+      github: "https://github.com/shanjid5566/Indian_Drone_service.git",
+      demo: "https://prasad-1.mtscorporate.com/",
+      category: "Full Stack",
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative task management tool with real-time updates, drag-and-drop interface, and team collaboration features.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
-      tags: ['React', 'Firebase', 'Tailwind CSS'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      category: 'Frontend',
+      title: "Whatsapp Bot",
+      description:
+        "An automated WhatsApp bot that interacts with users, providing information, answering queries, and performing tasks using the WhatsApp Business API.",
+      image: "/whatsapp_bot.jpg",
+      tags: ["React", "Firebase", "Tailwind CSS", "Express"],
+      github: "https://github.com/shanjid5566/whatsappbot.git",
+      demo: "https://louisalex.mtscorporate.com/",
+      category: "Frontend",
     },
     {
-      title: 'Social Media Dashboard',
-      description: 'Analytics dashboard for tracking social media metrics across multiple platforms with beautiful data visualizations.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      tags: ['Next.js', 'Chart.js', 'PostgreSQL'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      category: 'Full Stack',
+      title: "Q Global Living.",
+      description: "Connecting the World to Côte d'Ivoire's Real Estate",
+      image: "/qHomes.jpeg",
+      tags: ["Next.js", "Chart.js", "PostgreSQL", "Tailwind CSS"],
+      github: "https://github.com/shanjid5566/qHomes.git",
+      demo: "https://qhomes.mtscorporate.com/en",
+      category: "Full Stack",
     },
     {
-      title: 'Weather Forecast App',
-      description: 'Beautiful weather application with 7-day forecast, interactive maps, and location-based weather alerts.',
-      image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=600&h=400&fit=crop',
-      tags: ['React', 'OpenWeather API', 'CSS'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      category: 'Frontend',
+      title: "Weather Forecast App",
+      description:
+        "Beautiful weather application with 7-day forecast, interactive maps, and location-based weather alerts.",
+      image:
+        "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=600&h=400&fit=crop",
+      tags: ["React", "OpenWeather API", "Tailwind CSS", "Redux"],
+      github: "https://github.com/shanjid5566/weather-react-redux.git",
+      demo: "https://weather-react-redux-beige.vercel.app/",
+      category: "Frontend",
     },
     {
-      title: 'Portfolio CMS',
-      description: 'Content management system specifically designed for creative professionals to showcase their work.',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
-      tags: ['React', 'Express', 'MySQL'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      category: 'Full Stack',
+      title: "CryptoCurrency",
+      description:
+        "Real-time cryptocurrency app with price tracking, market analysis, and portfolio management features.",
+      image: "/cryptoCurrency.jpg",
+      tags: ["React", "Express", "PostgreSQL", "Chart.js"],
+      github: "https://github.com/shanjid5566/cryptoCurrency.git",
+      demo: "https://heera.mtscorporate.com/",
+      category: "Full Stack",
     },
     {
-      title: 'Fitness Tracker',
-      description: 'Mobile-responsive fitness tracking app with workout plans, progress tracking, and nutrition guide.',
-      image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop',
-      tags: ['React Native', 'Firebase', 'Redux'],
-      github: 'https://github.com',
-      demo: 'https://demo.com',
-      category: 'Mobile',
+      title: "Simple Dictionary App",
+      description:
+        "A user-friendly dictionary application that provides word definitions, synonyms, and pronunciation guides.",
+      image: "/dictionary.jpg",
+      tags: ["React", "Tailwind CSS", "LibreTranslate "],
+      github: "https://github.com/shanjid5566/simple-dictionary-react.git",
+      demo: "https://simple-dictionary-react.vercel.app/",
+      category: "Frontend",
+    },
+    {
+      title: "Simple Invoice Generator",
+      description:
+        "A straightforward invoice generator that allows users to create, customize, and download professional invoices quickly.",
+      image: "/invoice_generator.png",
+      tags: ["React", "Tailwind CSS", "MongoDB"],
+      github: "https://github.com/shanjid5566/invoice-generator-react.git",
+      demo: "https://invoice-generator-react-mu.vercel.app/",
+      category: "Frontend",
+    },
+    {
+      title: "Stone Paper Scissors Game",
+      description:
+        "An interactive Stone-Paper-Scissors game with score tracking and animated graphics for an engaging user experience.",
+      image: "/stone_paper.png",
+      tags: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/shanjid5566/stone-paper-scissors.git",
+      demo: "https://stone-paper-scissors-tan.vercel.app/",
+      category: "Frontend",
+    },
+    {
+      title: "Text to Speech Converter",
+      description:
+        "A web application that converts written text into natural-sounding speech using advanced text-to-speech technology.",
+      image: "/text_to_speech.png",
+      tags: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/shanjid5566/text-to-speech-converter.git",
+      demo: "https://text-to-speech-converter-five-beta.vercel.app/",
+      category: "Frontend",
     },
   ];
 
   return (
-    <section id="projects" className="section-container bg-gray-50 dark:bg-dark-800">
+    <section
+      id="projects"
+      className="section-container bg-gray-50 dark:bg-dark-800"
+    >
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
@@ -94,8 +133,8 @@ const Projects = () => {
             transition={{ delay: 0.5 }}
             className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
           >
-            Here are some of my recent projects that showcase my skills and passion
-            for creating exceptional digital experiences.
+            Here are some of my recent projects that showcase my skills and
+            passion for creating exceptional digital experiences.
           </motion.p>
         </div>
 

@@ -147,7 +147,40 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors py-2"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const id = link.href;
+                    // Close menu first so the layout becomes stable, then scroll
+                    setIsOpen(false);
+
+                    // Wait for the menu exit animation to finish (approx 300-350ms), then scroll
+                    setTimeout(() => {
+                      const el = document.querySelector(id);
+                      const nav = document.querySelector('nav');
+                      const offset = nav ? nav.offsetHeight + 8 : 0;
+
+                      if (el) {
+                        try {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          // Adjust for fixed header after small delay
+                          setTimeout(() => {
+                            const top = el.getBoundingClientRect().top + window.scrollY - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                          }, 200);
+                        } catch (err) {
+                          console.warn('scrollIntoView failed, using manual scroll', err);
+                          const top = el.getBoundingClientRect().top + window.scrollY - offset;
+                          window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                      } else {
+                        try {
+                          history.replaceState(null, '', id);
+                        } catch (err) {
+                          console.warn('history.replaceState failed', err);
+                        }
+                      }
+                    }, 330);
+                  }}
                   whileHover={{ x: 10 }}
                 >
                   {link.name}

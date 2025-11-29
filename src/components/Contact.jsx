@@ -29,14 +29,14 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'your.email@example.com',
-      link: 'mailto:your.email@example.com',
+      value: 'shanjidahmed66@gmail.com',
+      link: 'https://mail.google.com/mail/?view=cm&fs=1&to=shanjidahmed66@gmail.com',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+880 123 456 7890',
-      link: 'tel:+8801234567890',
+      value: '+880 130 929 7183',
+      link: 'tel:+8801309297183',
     },
     {
       icon: MapPin,
@@ -125,6 +125,8 @@ const Contact = () => {
                       {info.link ? (
                         <a
                           href={info.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="text-gray-900 dark:text-white font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                         >
                           {info.value}

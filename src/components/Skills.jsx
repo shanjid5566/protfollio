@@ -49,13 +49,11 @@ const Skills = () => {
     "Next.js",
     "Git",
     "Figma",
-    "PostgreSQL",
     "Redux",
     "Firebase",
-    "Docker",
-    "GraphQL",
-    "AWS",
     "Framer Motion",
+    "Vercel",
+    "Netlify",
   ];
 
   return (
@@ -157,7 +155,7 @@ const Skills = () => {
                 animate={isInView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ delay: 0.8 + index * 0.05 }}
                 whileHover={{ scale: 1.1, y: -5 }}
-                className="px-5 py-2.5 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-800 cursor-pointer hover:shadow-md transition-all"
+                className="px-5 py-2.5 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-800 cursor-pointer hover:shadow-md transition-all text-center whitespace-nowrap"
               >
                 {tool}
               </motion.span>

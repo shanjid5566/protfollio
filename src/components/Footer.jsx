@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { Heart, ArrowUp } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { Heart, ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -9,32 +9,37 @@ const Footer = () => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const footerLinks = [
     {
-      title: 'Navigation',
+      title: "Navigation",
       links: [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Contact', href: '#contact' },
+        { name: "Home", href: "#home" },
+        { name: "About", href: "#about" },
+        { name: "Projects", href: "#projects" },
+        { name: "Skills", href: "#skills" },
+        { name: "Contact", href: "#contact" },
       ],
     },
     {
-      title: 'Social',
+      title: "Social",
       links: [
-        { name: 'GitHub', href: 'https://github.com' },
-        { name: 'LinkedIn', href: 'https://linkedin.com' },
-        { name: 'Twitter', href: 'https://twitter.com' },
-        { name: 'Email', href: 'mailto:your@email.com' },
+        { name: "GitHub", href: "https://github.com/shanjid5566" },
+        {
+          name: "LinkedIn",
+          href: "https://www.linkedin.com/in/shanjid-ahmed-0b1691157/",
+        },
+        {
+          name: "Email",
+          href: "https://mail.google.com/mail/?view=cm&fs=1&to=shanjidahmed66@gmail.com",
+        },
       ],
     },
   ];
@@ -54,13 +59,16 @@ const Footer = () => {
               Portfolio
             </motion.h3>
             <p className="text-gray-400 mb-4">
-              Building digital experiences that inspire and innovate. Let's create
-              something amazing together.
+              Building digital experiences that inspire and innovate. Let's
+              create something amazing together.
             </p>
             <div className="flex gap-2 items-center text-sm">
               <span>Made with</span>
-              <Heart size={16} className="text-red-500 fill-red-500 animate-pulse" />
-              <span>by Your Name</span>
+              <Heart
+                size={16}
+                className="text-red-500 fill-red-500 animate-pulse"
+              />
+              <span>by Shanjid Ahmed Rafi</span>
             </div>
           </div>
 
@@ -80,8 +88,14 @@ const Footer = () => {
                     <a
                       href={link.href}
                       className="hover:text-primary-400 transition-colors inline-block hover:translate-x-1 duration-300"
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={
+                        link.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        link.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                     >
                       {link.name}
                     </a>
@@ -94,7 +108,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-dark-700 text-center text-sm">
-          <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Shanjid Ahmed Rafi. All rights reserved.</p>
         </div>
       </div>
 

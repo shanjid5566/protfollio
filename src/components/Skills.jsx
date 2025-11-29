@@ -1,68 +1,68 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Skills = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const skillCategories = [
     {
-      title: 'Frontend',
+      title: "Frontend",
       skills: [
-        { name: 'React', level: 95 },
-        { name: 'JavaScript/TypeScript', level: 92 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'Next.js', level: 88 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'Redux', level: 85 },
+        { name: "React", level: 90 },
+        { name: "JavaScript/TypeScript", level: 85 },
+        { name: "Tailwind CSS", level: 90 },
+        { name: "Next.js", level: 75 },
+        { name: "HTML/CSS", level: 90 },
+        { name: "Redux", level: 80 },
       ],
     },
     {
-      title: 'Backend',
+      title: "Backend",
       skills: [
-        { name: 'Node.js', level: 90 },
-        { name: 'Express.js', level: 88 },
-        { name: 'MongoDB', level: 85 },
-        { name: 'PostgreSQL', level: 82 },
-        { name: 'REST APIs', level: 93 },
-        { name: 'GraphQL', level: 80 },
+        { name: "Node.js", level: 70 },
+        { name: "Express.js", level: 75 },
+        { name: "MongoDB", level: 85 },
+        { name: "REST APIs", level: 84 },
       ],
     },
     {
-      title: 'Tools & Others',
+      title: "Tools & Others",
       skills: [
-        { name: 'Git & GitHub', level: 93 },
-        { name: 'VS Code', level: 95 },
-        { name: 'Figma', level: 85 },
-        { name: 'Docker', level: 78 },
-        { name: 'AWS', level: 75 },
-        { name: 'Agile/Scrum', level: 88 },
+        { name: "Git & GitHub", level: 88 },
+        { name: "VS Code", level: 90 },
+        { name: "Figma", level: 79 },
+        { name: "Vercel", level: 70 },
+        { name: "Netlify", level: 65 },
       ],
     },
   ];
 
   const tools = [
-    'React',
-    'Node.js',
-    'TypeScript',
-    'Tailwind CSS',
-    'MongoDB',
-    'Express',
-    'Next.js',
-    'Git',
-    'Figma',
-    'PostgreSQL',
-    'Redux',
-    'Firebase',
-    'Docker',
-    'GraphQL',
-    'AWS',
-    'Framer Motion',
+    "React",
+    "Node.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "MongoDB",
+    "Express",
+    "Next.js",
+    "Git",
+    "Figma",
+    "PostgreSQL",
+    "Redux",
+    "Firebase",
+    "Docker",
+    "GraphQL",
+    "AWS",
+    "Framer Motion",
   ];
 
   return (
-    <section id="skills" className="section-container bg-white dark:bg-dark-900">
+    <section
+      id="skills"
+      className="section-container bg-white dark:bg-dark-900"
+    >
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
@@ -127,7 +127,7 @@ const Skills = () => {
                         transition={{
                           delay: 0.5 + categoryIndex * 0.1 + skillIndex * 0.05,
                           duration: 1,
-                          ease: 'easeOut',
+                          ease: "easeOut",
                         }}
                         className="h-full bg-gradient-to-r from-primary-600 to-primary-400 rounded-full"
                       />

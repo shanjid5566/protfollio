@@ -23,6 +23,23 @@ const Hero = () => {
     },
   };
 
+  const handleDownloadCV = async () => {
+    try {
+      const response = await fetch('/SHANJID-AHMED-RAFI.pdf');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'SHANJID-AHMED-RAFI.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download failed:', error);
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-primary-50 dark:from-dark-900 dark:via-dark-900 dark:to-dark-800 pt-20">
       <div className="section-container">
@@ -93,14 +110,13 @@ const Hero = () => {
                   <Send size={20} className="group-hover:translate-x-1 transition-transform" />
                   <span>Get In Touch</span>
                 </a>
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="inline-flex items-center gap-2 px-6 py-3 text-primary-600 dark:text-primary-400 font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-300 whitespace-nowrap"
+                <button
+                  onClick={handleDownloadCV}
+                  className="inline-flex items-center gap-2 px-6 py-3 text-primary-600 dark:text-primary-400 font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-all duration-300 whitespace-nowrap cursor-pointer"
                 >
                   <Download size={20} />
                   <span>Download CV</span>
-                </a>
+                </button>
               </motion.div>
             </div>
 

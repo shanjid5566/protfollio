@@ -63,12 +63,7 @@ const Footer = () => {
               create something amazing together.
             </p>
             <div className="flex gap-2 items-center text-sm">
-              <span>Made with</span>
-              <Heart
-                size={16}
-                className="text-red-500 fill-red-500 animate-pulse"
-              />
-              <span>by Shanjid Ahmed Rafi</span>
+              <span>Made by Shanjid Ahmed Rafi</span>
             </div>
           </div>
 

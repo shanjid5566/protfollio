@@ -11,6 +11,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* For fixed navbar */
   }
 
   body {
@@ -19,6 +20,11 @@
 
   ::selection {
     @apply bg-primary-500 text-white;
+  }
+
+  /* Smooth scrolling for all anchors */
+  a[href^="#"] {
+    scroll-behavior: smooth;
   }
 }
 

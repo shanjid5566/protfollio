@@ -9,33 +9,60 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Indian Drone Services",
+      title: "School Management System",
       description:
-        "A comprehensive drone service platform offering aerial photography, surveying, and delivery solutions using cutting-edge drone technology.",
-      image: "/indian_drone_services.jpg",
-      tags: ["React", "Node.js", "Express", "PostgreSQL"],
-      github: "https://github.com/shanjid5566/Indian_Drone_service.git",
-      demo: "https://prasad-1.mtscorporate.com/",
+        "A comprehensive school management system that streamlines administrative tasks, student information management, and communication between teachers, students, and parents.",
+      image: "/edu_pro.png",
+      tags: ["React", "Express", "TypeScript", "PostgreSQL","Socket.IO"],
+      githubFrontend: "https://github.com/shanjid5566/edu_pro_frontend.git",
+      githubBackend: "https://github.com/shanjid5566/edu_pro_backend.git",
+      demo: "https://edu-pro-frontend.vercel.app/login",
       category: "Full Stack",
     },
     {
-      title: "Whatsapp Bot",
+      title: "Advertising Platform",
       description:
-        "An automated WhatsApp bot that interacts with users, providing information, answering queries, and performing tasks using the WhatsApp Business API.",
-      image: "/whatsapp_bot.jpg",
-      tags: ["React", "Firebase", "Tailwind CSS", "Express"],
-      github: "https://github.com/shanjid5566/whatsappbot.git",
-      demo: "https://louisalex.mtscorporate.com/",
+        "A dynamic advertising platform that connects businesses with their target audience through personalized ad campaigns and real-time analytics.",
+      image: "/sideguru.png",
+      tags: ["React", "Node.js", "Express", "TypeScript", "PostgreSQL","Stripe"],
+      githubFrontend: "https://github.com/shanjid5566/sideguru.git",
+      githubBackend: "https://github.com/shanjid5566/sideguru_backend.git",
+      demo: "https://sideguru.vercel.app/",
+      category: "Full Stack",
+    },
+    {
+      title: "Travel Agency Website",
+      description:
+        "A visually stunning travel agency website that offers seamless booking experiences, destination guides, and personalized travel recommendations.",
+      image: "/traveloneclick.png",
+      tags: ["React", "PostgreSQL", "Express", "TypeScript"],
+      githubFrontend: "https://github.com/shanjid5566/iwona05_500_frontend.git",
+      githubBackend: "https://github.com/shanjid5566/iwona_backend.git",
+      demo: "https://iwona-frontend.vercel.app/",
+      category: "Full Stack",
+    },
+    {
+      title: "E-commerce Application",
+      description:
+        "A feature-rich e-commerce application with a modern UI, product management, and seamless checkout experience.",
+      image:
+        "/ecommarce_application.png",
+      tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+      githubFrontend: "https://github.com/shanjid5566/backbencherMart_frontend.git",
+      githubBackend: "https://github.com/shanjid5566/backbencherMart.git",
+      demo: "https://backbencher-mart-frontend.vercel.app/",
+      category: "Full Stack",
+    },
+    {
+      title: "Car Selling Platform",
+      description:
+        "A user-friendly car selling platform that allows users to list, browse, and purchase vehicles with ease.",
+      image:
+        "/nohaautomative.png",
+      tags: ["React", "rechart js", "Tailwind CSS"],
+      github: "https://github.com/shanjid5566/nohaautomative.git",
+      demo: "https://nohaautomative.vercel.app/",
       category: "Frontend",
-    },
-    {
-      title: "Q Global Living.",
-      description: "Connecting the World to Côte d'Ivoire's Real Estate",
-      image: "/qHomes.jpeg",
-      tags: ["Next.js", "Chart.js", "PostgreSQL", "Tailwind CSS"],
-      github: "https://github.com/shanjid5566/qHomes.git",
-      demo: "https://qhomes.mtscorporate.com/en",
-      category: "Full Stack",
     },
     {
       title: "Weather Forecast App",
@@ -48,15 +75,16 @@ const Projects = () => {
       demo: "https://weather-react-redux-beige.vercel.app/",
       category: "Frontend",
     },
-    {
-      title: "CryptoCurrency",
+        {
+      title: "Animation portfolio",
       description:
-        "Real-time cryptocurrency app with price tracking, market analysis, and portfolio management features.",
-      image: "/cryptoCurrency.jpg",
-      tags: ["React", "Express", "PostgreSQL", "Chart.js"],
-      github: "https://github.com/shanjid5566/cryptoCurrency.git",
-      demo: "https://heera.mtscorporate.com/",
-      category: "Full Stack",
+        "A visually stunning animation portfolio showcasing a collection of captivating animations, demonstrating creativity and technical skills in motion design.",
+      image:
+        "/animation.png",
+      tags: ["React", "OpenWeather API", "Tailwind CSS", "Redux"],
+      github: "https://github.com/shanjid5566/matt.git",
+      demo: "https://matt-one-mauve.vercel.app/",
+      category: "Frontend",
     },
     {
       title: "Simple Dictionary App",
@@ -157,22 +185,49 @@ const Projects = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 py-2 rounded-lg transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={18} />
-                      <span className="text-sm font-medium">Code</span>
-                    </a>
+                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 flex-col">
+                    {project.githubFrontend && project.githubBackend ? (
+                      <div className="flex gap-2">
+                        <a
+                          href={project.githubFrontend}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 py-2 rounded-lg transition-colors text-xs"
+                          onClick={(e) => e.stopPropagation()}
+                          title="Frontend Repository"
+                        >
+                          <Github size={16} />
+                          <span className="font-medium">Frontend</span>
+                        </a>
+                        <a
+                          href={project.githubBackend}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 py-2 rounded-lg transition-colors text-xs"
+                          onClick={(e) => e.stopPropagation()}
+                          title="Backend Repository"
+                        >
+                          <Github size={16} />
+                          <span className="font-medium">Backend</span>
+                        </a>
+                      </div>
+                    ) : (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 py-2 rounded-lg transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Github size={18} />
+                        <span className="text-sm font-medium">Code</span>
+                      </a>
+                    )}
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-lg transition-colors"
+                      className="flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-lg transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink size={18} />

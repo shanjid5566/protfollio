@@ -35,7 +35,7 @@ const Skills = () => {
         { name: "VS Code", level: 90 },
         { name: "Figma", level: 79 },
         { name: "Vercel", level: 70 },
-        { name: "Netlify", level: 65 },
+        { name: "Coolify", level: 65 },
       ],
     },
   ];
@@ -54,7 +54,7 @@ const Skills = () => {
     "Firebase",
     "Framer Motion",
     "Vercel",
-    "Netlify",
+    "Coolify",
   ];
 
   return (

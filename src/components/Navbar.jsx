@@ -1,10 +1,11 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const scrollAnimationRef = useRef(null);
   const [theme, setTheme] = useState(() => {
     try {
       const stored = localStorage.getItem('theme');
@@ -15,6 +16,37 @@ const Navbar = () => {
     }
     return 'light';
   });
+
+  // Smooth scroll animation function
+  const smoothScrollTo = (targetY, duration = 1000) => {
+    // Cancel any ongoing animation
+    if (scrollAnimationRef.current) {
+      cancelAnimationFrame(scrollAnimationRef.current);
+    }
+
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    const easeInOutCubic = (t) => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const scroll = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = easeInOutCubic(progress);
+      const currentY = startY + distance * ease;
+
+      window.scrollTo(0, currentY);
+
+      if (progress < 1) {
+        scrollAnimationRef.current = requestAnimationFrame(scroll);
+      }
+    };
+
+    scrollAnimationRef.current = requestAnimationFrame(scroll);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -104,7 +136,19 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                onClick={() => setActiveLink(link.href)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveLink(link.href);
+                  const id = link.href;
+                  const el = document.querySelector(id);
+                  const nav = document.querySelector('nav');
+                  const offset = nav ? nav.offsetHeight + 8 : 0;
+
+                  if (el) {
+                    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+                    smoothScrollTo(top, 1000);
+                  }
+                }}
                 aria-current={activeLink === link.href ? 'page' : undefined}
                 className={`${activeLink === link.href ? 'text-primary-600 dark:text-primary-400 font-semibold' : 'text-gray-700 dark:text-gray-300'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors`}
                 initial={{ opacity: 0, y: -20 }}
@@ -185,18 +229,8 @@ const Navbar = () => {
                       const offset = nav ? nav.offsetHeight + 8 : 0;
 
                       if (el) {
-                        try {
-                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                          // Adjust for fixed header after small delay
-                          setTimeout(() => {
-                            const top = el.getBoundingClientRect().top + window.scrollY - offset;
-                            window.scrollTo({ top, behavior: 'smooth' });
-                          }, 200);
-                        } catch (err) {
-                          console.warn('scrollIntoView failed, using manual scroll', err);
-                          const top = el.getBoundingClientRect().top + window.scrollY - offset;
-                          window.scrollTo({ top, behavior: 'smooth' });
-                        }
+                        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+                        smoothScrollTo(top, 1000);
                       } else {
                         try {
                           history.replaceState(null, '', id);

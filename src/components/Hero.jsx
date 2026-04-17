@@ -25,7 +25,7 @@ const Hero = () => {
 
   const handleDownloadCV = async () => {
     try {
-      const response = await fetch('/SHANJID-AHMED-RAFI.pdf');
+      const response = await fetch('/SHANJID-AHMED-RAFI(updated).pdf');
       const blob = await response.blob();
       const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
       const link = document.createElement('a');

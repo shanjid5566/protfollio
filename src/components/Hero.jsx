@@ -91,10 +91,11 @@ const Hero = () => {
                 variants={itemVariants}
                 className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl leading-relaxed"
               >
-                I design and build accessible, high-performance web applications using React and
-                Next.js, leveraging modern tooling like Tailwind CSS. I focus on
-                clean, component-driven code, server-rendered and client-side solutions, responsive
-                interfaces, and practical UX delivering reliable, production-ready applications.
+                I build scalable full-stack web applications using React and Next.js on the frontend,
+                with Express and Node.js on the backend, backed by PostgreSQL and Prisma for robust
+                data management. I focus on clean, component-driven code, RESTful APIs, type-safe
+                database interactions, and end-to-end solutions that deliver seamless user experiences
+                and production-ready applications.
               </motion.p>
 
               {/* CTA Buttons */}

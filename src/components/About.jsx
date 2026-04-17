@@ -94,7 +94,7 @@ const About = () => {
           >
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               I'm a passionate <span className="text-primary-600 dark:text-primary-400 font-semibold">Full Stack Web Developer</span> with
-              over 3 months of experience in creating digital experiences that
+              over 8 months of experience in creating digital experiences that
               make a difference. I am currently working as an intern at MAKTECH SOLUCTION,
               where I contribute to real-world projects and gain practical industry experience.
             </p>
@@ -112,9 +112,9 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-6">
               {[
-                { value: '3+', label: 'Months Exp.' },
-                { value: '12+', label: 'Projects' },
-                { value: '4+', label: 'Happy Clients' },
+                { value: '8+', label: 'Months Exp.' },
+                { value: '20+', label: 'Projects' },
+                { value: '12+', label: 'Happy Clients' },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
